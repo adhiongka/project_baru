@@ -13,30 +13,30 @@ import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.yangbaru.database.DBMahasiswa;
+import com.example.yangbaru.database.DBUniversitas;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText NIM, Nama, TanggalLahir, Alamat;
-    private Spinner Jurusan;
-    private RadioButton MALE, FEMALE;
+    private EditText Kode, Nama, TanggalLahir, Alamat;
+    private Spinner Akreditas;
+    private RadioButton NEGERI, BELUM_NEGERI;
 
     //bariabel menyiman input dari user
-    private String setNIM, setNama, setTanggalLahir, setAlamat, setJurusan, setJenisKelamin;
+    private String setKode, setNama, setTanggalLahir, setAlamat, setAkreditas, setJenisKampus;
     //variabel untuk inisialisasi database
-    private DBMahasiswa dbMahasiswa;
+    private DBUniversitas dbUniversitas;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Button simpan = findViewById(R.id.save);
-        NIM = findViewById(R.id.nim);
+        Kode = findViewById(R.id.kode);
         Nama = findViewById(R.id.nama);
         TanggalLahir = findViewById(R.id.date);
-        MALE = findViewById(R.id.male);
-        FEMALE =  findViewById(R.id.female);
-        Jurusan = findViewById(R.id.jurusan);
+        NEGERI = findViewById(R.id.negeri);
+        BELUM_NEGERI =  findViewById(R.id.belumnegeri);
+        Akreditas = findViewById(R.id.akreditas);
         Alamat = findViewById(R.id.alamat);
 
         Button lihat = findViewById(R.id.lihat);
@@ -44,30 +44,30 @@ public class MainActivity extends AppCompatActivity {
         lihat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent pin = new Intent(MainActivity.this, RecyclerViewAdapter.class);
+                Intent pin = new Intent(MainActivity.this, ViewData.class);
                 startActivity(pin);
             }
         });
 
-        //Inisialisasi dan Mendapatkan Konteks dari DBMahasiswa
+        //Inisialisasi dan Mendapatkan Konteks dari DBUniversitas
 
-        dbMahasiswa = new DBMahasiswa(getBaseContext());
+        dbUniversitas = new DBUniversitas(getBaseContext());
 
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setData();
                 saveData();
-                Toast.makeText(getApplicationContext(), "data pada database"
-                        + dbMahasiswa.getDatabaseName()
-                        + "berhasil Disimpan", Toast.LENGTH_SHORT) .show();
+                Toast.makeText(getApplicationContext(), "data pada database "
+                        + dbUniversitas.getDatabaseName()
+                        + " berhasil Disimpan", Toast.LENGTH_SHORT) .show();
                 clearData();
             }
         });
 
-//        DBMahasiswa dbMahasiswa = new DBMahasiswa(getBaseContext());
+//        DBUniversitas dbUniversitas = new DBUniversitas(getBaseContext());
 //        Toast.makeText(getApplication(), "Nama Database yang Dibuat : "
-//                + dbMahasiswa.getDatabaseName() + "Beserta Tabelnya", Toast.LENGTH_SHORT) .show();
+//                + dbUniversitas.getDatabaseName() + "Beserta Tabelnya", Toast.LENGTH_SHORT) .show();
 
 //        Button tombolPindah = findViewById(R.id.pindah);
 
@@ -78,13 +78,13 @@ public class MainActivity extends AppCompatActivity {
     }
 //statement untuk mendapatkan data
     private void setData() {
-        setNIM = NIM.getText().toString();
+        setKode = Kode.getText().toString();
         setNama = Nama.getText().toString();
-        setJurusan = Jurusan.getSelectedItem().toString();
-        if(MALE.isChecked()){
-            setJenisKelamin = MALE.getText().toString();
-        }else if (FEMALE.isChecked()) {
-            setJenisKelamin = FEMALE.getText().toString();
+        setAkreditas = Akreditas.getSelectedItem().toString();
+        if(NEGERI.isChecked()){
+            setJenisKampus = NEGERI.getText().toString();
+        }else if (BELUM_NEGERI.isChecked()) {
+            setJenisKampus = BELUM_NEGERI.getText().toString();
         }
         setTanggalLahir = TanggalLahir.getText().toString();
         setAlamat = Alamat.getText().toString();
@@ -92,20 +92,20 @@ public class MainActivity extends AppCompatActivity {
 //    private ContentValues values;
 //statemanet untuk mnyimpan data pada database
     private void saveData(){
-        SQLiteDatabase create = dbMahasiswa.getReadableDatabase();
+        SQLiteDatabase create = dbUniversitas.getReadableDatabase();
         //membuat mamp baru yang berisi nama kolom dan data yang ingin di masukan
       ContentValues values = new ContentValues();
-      values.put(DBMahasiswa.MyColumns.NIM, setNIM);
-      values.put(DBMahasiswa.MyColumns.Nama, setNama);
-      values.put(DBMahasiswa.MyColumns.Jurusan, setJurusan);
-      values.put(DBMahasiswa.MyColumns.JenisKelamin, setJenisKelamin);
-      values.put(DBMahasiswa.MyColumns.TanggalLahir, setTanggalLahir);
-      values.put(DBMahasiswa.MyColumns.Alamat, setAlamat);
+      values.put(DBUniversitas.MyColumns.Kode, setKode);
+      values.put(DBUniversitas.MyColumns.Nama, setNama);
+      values.put(DBUniversitas.MyColumns.Akreditas, setAkreditas);
+      values.put(DBUniversitas.MyColumns.Jenis, setJenisKampus);
+      values.put(DBUniversitas.MyColumns.TanggalLahir, setTanggalLahir);
+      values.put(DBUniversitas.MyColumns.Alamat, setAlamat);
       //Menambahkan Baris Baru, Berupa Data yang diinputkan
-        create.insert(DBMahasiswa.MyColumns.NamaTabel, null, values);
+        create.insert(DBUniversitas.MyColumns.NamaTabel, null, values);
     }
     private void clearData(){
-        NIM.setText("");
+        Kode.setText("");
         Nama.setText("");
         TanggalLahir.setText("");
         Alamat.setText("");

@@ -5,29 +5,27 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
-import androidx.annotation.Nullable;
-
-public class DBMahasiswa extends SQLiteOpenHelper {
+public class DBUniversitas extends SQLiteOpenHelper {
     //mengatur nama tabel
     public static abstract class MyColumns implements BaseColumns{
-       public static final String NamaTabel = "Mahasiswa";
-        public static final String NIM = "NIM";
-        public static final String Nama = "Nama_Mahasiswa";
-        public static final String Jurusan = "Jurusan";
-        public static final String JenisKelamin = "Jenis_Kelamin";
+       public static final String NamaTabel = "Universitas";
+        public static final String Kode = "Kode";
+        public static final String Nama = "Nama";
+        public static final String Akreditas = "Akreditas";
+        public static final String Jenis = "Jenis_Kampus";
         public static final String TanggalLahir = "Tanggal_Lahir";
         public static final String Alamat = "Alamat";
     }
 
-    private static final String NamaDatabase = "poligon.db";
+    private static final String NamaDatabase = "kampus.db";
 
     private static final int VersiDatabase = 1;
 
     //Query yang digunakan untuk membuat Tabel
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE "
-            +MyColumns.NamaTabel+ "("+MyColumns.NIM+" TEXT PRIMARY KEY, "
-            +MyColumns.Nama+" TEXT NOT NULL," +MyColumns.Jurusan+ " TEXT NOT NULL,"
-            +MyColumns.JenisKelamin+" TEXT NOT NULL, "+MyColumns.TanggalLahir
+            +MyColumns.NamaTabel+ "("+MyColumns.Kode +" TEXT PRIMARY KEY, "
+            +MyColumns.Nama+" TEXT NOT NULL," +MyColumns.Akreditas + " TEXT NOT NULL,"
+            +MyColumns.Jenis +" TEXT NOT NULL, "+MyColumns.TanggalLahir
             + " TEXT NOT NULL, "+MyColumns.Alamat+" TEXT NOT NULL)";
 
     //Query yang digunakan untuk mengupgrade Tabel
@@ -36,7 +34,7 @@ public class DBMahasiswa extends SQLiteOpenHelper {
 
 
 
-    public DBMahasiswa(Context context) {
+    public DBUniversitas(Context context) {
 
         super(context, NamaDatabase, null, VersiDatabase);
     }

@@ -31,18 +31,18 @@
             android:textSize="18sp"
             android:textStyle="bold" />
         <TextView
-            android:id="@+id/nim"
+            android:id="@+id/kode"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="NIM"
+            android:text="KODE"
             android:textSize="14sp"/>
         <TextView
-            android:id="@+id/jurusan"
+            android:id="@+id/akreditas"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:text="Jurusan"/>
+            android:text="AKREDITAS"/>
 
 
     </LinearLayout>

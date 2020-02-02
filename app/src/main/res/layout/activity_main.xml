@@ -13,34 +13,34 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:gravity="center"
-        android:text="Data Mahasiswa"
+        android:text="Data Kampus"
         android:textSize="20sp"
         android:textStyle="bold"/>
     <EditText
-        android:id="@+id/nim"
+        android:id="@+id/kode"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Masukan NIM"
+        android:hint="Masukan Kode Kampus"
         android:inputType="textPersonName"/>
     <EditText
         android:id="@+id/nama"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Masukan Nama"
+        android:hint="Masukan Nama Kampus"
         android:inputType="textPersonName"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginRight="4dp"
         android:layout_marginTop="6dp"
-        android:text="Fakultas/Jurusan:"/>
+        android:text="Akreditas: "/>
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/jurusan"
-        android:entries="@array/daftar_jurusan"
+        android:id="@+id/akreditas"
+        android:entries="@array/daftar_akreditas"
         android:padding="15dp">
 
     </Spinner>
@@ -48,25 +48,26 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jenis Kelamin:" />
+        android:text="Jenis Kampus (Negeri/Belum Negeri):" />
 
     <RadioGroup
+        android:layout_marginTop="7dp"
         android:id="@+id/gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/male"
+            android:id="@+id/negeri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Laki-laki"/>
+            android:text="Negeri"/>
         <RadioButton
-            android:id="@+id/female"
+            android:id="@+id/belumnegeri"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
-            android:text="Perempuan"/>
+            android:text="Belum Negeri"/>
     </RadioGroup>
 
     <EditText
@@ -81,7 +82,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Alamat Lengkap"
+        android:hint="Alamat Kampus"
         android:inputType="textMultiLine"/>
     <Button
         android:id="@+id/save"

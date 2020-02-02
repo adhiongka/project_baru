@@ -1,9 +1,10 @@
 <resources>
     <string name="app_name">yangbaru</string>
-    <string-array name="daftar_jurusan">
-        <item>Teknik Informatika</item>
-        <item>Mesin dan Peralatan Pertanian</item>
-        <item>Teknologi Hasil Pangan</item>
+    <string-array name="daftar_akreditas">
+        <item>A</item>
+        <item>B</item>
+        <item>C</item>
+        <item>Belum Terakreditas</item>
     </string-array>
 </resources>
 

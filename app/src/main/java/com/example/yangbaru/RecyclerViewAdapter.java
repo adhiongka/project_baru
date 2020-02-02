@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -14,22 +13,22 @@ import java.util.ArrayList;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
 
     private ArrayList namaList;
-    private ArrayList jurusanList;
-    private ArrayList nimList;
+    private ArrayList akreditasList;
+    private ArrayList kodeList;
 
-    RecyclerViewAdapter(ArrayList namaList, ArrayList jurusanList, ArrayList nimList){
+    RecyclerViewAdapter(ArrayList namaList, ArrayList akreditasList, ArrayList kodeList){
 
         this.namaList = namaList;
-        this.jurusanList = jurusanList;
-        this.nimList = nimList;
+        this.akreditasList = akreditasList;
+        this.kodeList = kodeList;
     }
     class ViewHolder extends RecyclerView.ViewHolder{
-        private TextView Nama, Jurusan, Nim;
+        private TextView Nama, Akreditas, Kode;
         ViewHolder(View itemView) {
             super(itemView);
             Nama = itemView.findViewById(R.id.nama);
-            Jurusan = itemView.findViewById(R.id.jurusan);
-            Nim = itemView.findViewById(R.id.nim);
+            Akreditas = itemView.findViewById(R.id.akreditas);
+            Kode = itemView.findViewById(R.id.kode);
         }
     }
 
@@ -41,17 +40,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position){
         final String Nama = (String) namaList.get(position);
-        final String Jurusan = (String) jurusanList.get(position);
-        final String Nim = (String) nimList.get(position);
+        final String Akreditas = (String) akreditasList.get(position);
+        final String Kode = (String) kodeList.get(position);
 
         holder.Nama.setText(Nama);
-        holder.Jurusan.setText(Jurusan);
-        holder.Nim.setText(Nim);
+        holder.Akreditas.setText(Akreditas);
+        holder.Kode.setText(Kode);
     }
 
     @Override
     public int getItemCount() {
-        return nimList.size();
+        return kodeList.size();
     }
 
 }
