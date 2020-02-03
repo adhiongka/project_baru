@@ -12,6 +12,7 @@ public class DBUniversitas extends SQLiteOpenHelper {
         public static final String Kode = "Kode";
         public static final String Nama = "Nama";
         public static final String Akreditas = "Akreditas";
+        public static final String Status = "Status";
         public static final String Jenis = "Jenis_Kampus";
         public static final String TanggalLahir = "Tanggal_Lahir";
         public static final String Alamat = "Alamat";
@@ -24,9 +25,9 @@ public class DBUniversitas extends SQLiteOpenHelper {
     //Query yang digunakan untuk membuat Tabel
     private static final String SQL_CREATE_ENTRIES = "CREATE TABLE "
             +MyColumns.NamaTabel+ "("+MyColumns.Kode +" TEXT PRIMARY KEY, "
-            +MyColumns.Nama+" TEXT NOT NULL," +MyColumns.Akreditas + " TEXT NOT NULL,"
-            +MyColumns.Jenis +" TEXT NOT NULL, "+MyColumns.TanggalLahir
-            + " TEXT NOT NULL, "+MyColumns.Alamat+" TEXT NOT NULL)";
+            +MyColumns.Nama+ " TEXT NOT NULL," +MyColumns.Akreditas + " TEXT NOT NULL,"
+            +MyColumns.Status+ "TEXT NOT NULL" +MyColumns.Jenis +" TEXT NOT NULL,"
+            +MyColumns.TanggalLahir + " TEXT NOT NULL, "+MyColumns.Alamat+" TEXT NOT NULL)";
 
     //Query yang digunakan untuk mengupgrade Tabel
     private static final String SQL_DELETE_ENTRIES = "DROP TABLE IF EXISTS "

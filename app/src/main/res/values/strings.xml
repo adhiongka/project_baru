@@ -1,10 +1,22 @@
 <resources>
-    <string name="app_name">yangbaru</string>
+    <string name="app_name">Kampus Pintar</string>
     <string-array name="daftar_akreditas">
-        <item>A</item>
-        <item>B</item>
-        <item>C</item>
+        <item>Akreditas A</item>
+        <item>Akreditas B</item>
+        <item>Akreditas C</item>
         <item>Belum Terakreditas</item>
     </string-array>
+
+    <string-array name="daftar_status">
+        <item>PTN-BH</item>
+        <item>PTN-BLU</item>
+        <item>PTN-Satker</item>
+    </string-array>
+
+    <string name="salam_malam">Selamat Malam &#129303;</string>
+    <string name="salam_pagi">Selamat Pagi &#128522;</string>
+    <string name="salam_siang">Selamat Siang &#128526;</string>
+    <string name="salam_sore">Selamat Sore &#128513;</string>
+    <string name="menu_settings">Selamat Sore &#128513;</string>
 </resources>
 

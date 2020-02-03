@@ -4,8 +4,11 @@ import android.annotation.SuppressLint;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -23,18 +26,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         this.kodeList = kodeList;
     }
     class ViewHolder extends RecyclerView.ViewHolder{
+        private CardView cvItem;
         private TextView Nama, Akreditas, Kode;
+//        ImageView ivlogo;
         ViewHolder(View itemView) {
             super(itemView);
-            Nama = itemView.findViewById(R.id.nama);
-            Akreditas = itemView.findViewById(R.id.akreditas);
-            Kode = itemView.findViewById(R.id.kode);
+           cvItem = itemView.findViewById(R.id.cv_item);
+            Nama = itemView.findViewById(R.id.nama_kampus);
+            Akreditas = itemView.findViewById(R.id.akred);
+            Kode = itemView.findViewById(R.id.status);
+//            ivlogo = itemView.findViewById(R.id.logo);
         }
     }
 
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View V = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_design, parent, false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View V = LayoutInflater.from(parent.getContext()).inflate(R.layout.daftar_kampus, parent, false);
         return new ViewHolder(V);
     }
     @Override

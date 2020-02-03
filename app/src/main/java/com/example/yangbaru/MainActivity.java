@@ -18,13 +18,14 @@ import com.example.yangbaru.database.DBUniversitas;
 public class MainActivity extends AppCompatActivity {
 
     private EditText Kode, Nama, TanggalLahir, Alamat;
-    private Spinner Akreditas;
-    private RadioButton NEGERI, BELUM_NEGERI;
+    private Spinner Akreditas, Status;
+    private RadioButton NEGERI, SWASTA;
 
     //bariabel menyiman input dari user
-    private String setKode, setNama, setTanggalLahir, setAlamat, setAkreditas, setJenisKampus;
+    private String setKode, setNama, setTanggalLahir, setAlamat, setAkreditas, setStatus, setJenisKampus;
     //variabel untuk inisialisasi database
     private DBUniversitas dbUniversitas;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
         Nama = findViewById(R.id.nama);
         TanggalLahir = findViewById(R.id.date);
         NEGERI = findViewById(R.id.negeri);
-        BELUM_NEGERI =  findViewById(R.id.belumnegeri);
-        Akreditas = findViewById(R.id.akreditas);
+        SWASTA =  findViewById(R.id.belumnegeri);
+        Akreditas = findViewById(R.id.akred);
+        Status = findViewById(R.id.d_stat);
         Alamat = findViewById(R.id.alamat);
 
         Button lihat = findViewById(R.id.lihat);
@@ -81,10 +83,11 @@ public class MainActivity extends AppCompatActivity {
         setKode = Kode.getText().toString();
         setNama = Nama.getText().toString();
         setAkreditas = Akreditas.getSelectedItem().toString();
+        setStatus = Status.getSelectedItem().toString();
         if(NEGERI.isChecked()){
             setJenisKampus = NEGERI.getText().toString();
-        }else if (BELUM_NEGERI.isChecked()) {
-            setJenisKampus = BELUM_NEGERI.getText().toString();
+        }else if (SWASTA.isChecked()) {
+            setJenisKampus = SWASTA.getText().toString();
         }
         setTanggalLahir = TanggalLahir.getText().toString();
         setAlamat = Alamat.getText().toString();
@@ -98,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
       values.put(DBUniversitas.MyColumns.Kode, setKode);
       values.put(DBUniversitas.MyColumns.Nama, setNama);
       values.put(DBUniversitas.MyColumns.Akreditas, setAkreditas);
+      values.put(DBUniversitas.MyColumns.Status, setStatus);
       values.put(DBUniversitas.MyColumns.Jenis, setJenisKampus);
       values.put(DBUniversitas.MyColumns.TanggalLahir, setTanggalLahir);
       values.put(DBUniversitas.MyColumns.Alamat, setAlamat);

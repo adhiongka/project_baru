@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:layout_margin="12dp"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/cardview_light_background">
 
     <TextView
         android:layout_width="match_parent"
@@ -30,6 +31,7 @@
         android:ems="10"
         android:hint="Masukan Nama Kampus"
         android:inputType="textPersonName"/>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,16 +41,30 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/akreditas"
+        android:id="@+id/akred"
         android:entries="@array/daftar_akreditas"
         android:padding="15dp">
-
     </Spinner>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Jenis Kampus (Negeri/Belum Negeri):" />
+        android:layout_marginRight="4dp"
+        android:layout_marginTop="6dp"
+        android:text="Status: "/>
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/d_stat"
+        android:entries="@array/daftar_status"
+        android:padding="15dp">
+    </Spinner>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Jenis Kampus (Negeri/Swasta):" />
 
     <RadioGroup
         android:layout_marginTop="7dp"
@@ -67,7 +83,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginLeft="18dp"
-            android:text="Belum Negeri"/>
+            android:text="Swasta"/>
     </RadioGroup>
 
     <EditText
