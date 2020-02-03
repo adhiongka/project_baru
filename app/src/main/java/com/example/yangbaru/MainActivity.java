@@ -17,15 +17,13 @@ import com.example.yangbaru.database.DBUniversitas;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText Kode, Nama, TanggalLahir, Alamat;
+    private EditText Kode, Nama, Alamat;
     private Spinner Akreditas, Status;
     private RadioButton NEGERI, SWASTA;
-
     //bariabel menyiman input dari user
-    private String setKode, setNama, setTanggalLahir, setAlamat, setAkreditas, setStatus, setJenisKampus;
+    private String setKode, setNama, setAkreditas, setStatus, setJenis, setAlamat;
     //variabel untuk inisialisasi database
     private DBUniversitas dbUniversitas;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +32,10 @@ public class MainActivity extends AppCompatActivity {
         Button simpan = findViewById(R.id.save);
         Kode = findViewById(R.id.kode);
         Nama = findViewById(R.id.nama);
-        TanggalLahir = findViewById(R.id.date);
-        NEGERI = findViewById(R.id.negeri);
-        SWASTA =  findViewById(R.id.belumnegeri);
         Akreditas = findViewById(R.id.akred);
         Status = findViewById(R.id.d_stat);
+        NEGERI = findViewById(R.id.negeri);
+        SWASTA =  findViewById(R.id.swasta);
         Alamat = findViewById(R.id.alamat);
 
         Button lihat = findViewById(R.id.lihat);
@@ -50,11 +47,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(pin);
             }
         });
-
         //Inisialisasi dan Mendapatkan Konteks dari DBUniversitas
-
         dbUniversitas = new DBUniversitas(getBaseContext());
-
         simpan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -66,17 +60,6 @@ public class MainActivity extends AppCompatActivity {
                 clearData();
             }
         });
-
-//        DBUniversitas dbUniversitas = new DBUniversitas(getBaseContext());
-//        Toast.makeText(getApplication(), "Nama Database yang Dibuat : "
-//                + dbUniversitas.getDatabaseName() + "Beserta Tabelnya", Toast.LENGTH_SHORT) .show();
-
-//        Button tombolPindah = findViewById(R.id.pindah);
-
-//        tombolPindah.setOnClickListener(new view.onClickListener() {
-//            @Override
-//            public void onCl
-//        });
     }
 //statement untuk mendapatkan data
     private void setData() {
@@ -85,25 +68,22 @@ public class MainActivity extends AppCompatActivity {
         setAkreditas = Akreditas.getSelectedItem().toString();
         setStatus = Status.getSelectedItem().toString();
         if(NEGERI.isChecked()){
-            setJenisKampus = NEGERI.getText().toString();
+            setJenis = NEGERI.getText().toString();
         }else if (SWASTA.isChecked()) {
-            setJenisKampus = SWASTA.getText().toString();
+            setJenis = SWASTA.getText().toString();
         }
-        setTanggalLahir = TanggalLahir.getText().toString();
         setAlamat = Alamat.getText().toString();
     }
-//    private ContentValues values;
 //statemanet untuk mnyimpan data pada database
     private void saveData(){
         SQLiteDatabase create = dbUniversitas.getReadableDatabase();
-        //membuat mamp baru yang berisi nama kolom dan data yang ingin di masukan
+        //membuat map baru yang berisi nama kolom dan data yang ingin di masukan
       ContentValues values = new ContentValues();
       values.put(DBUniversitas.MyColumns.Kode, setKode);
       values.put(DBUniversitas.MyColumns.Nama, setNama);
       values.put(DBUniversitas.MyColumns.Akreditas, setAkreditas);
       values.put(DBUniversitas.MyColumns.Status, setStatus);
-      values.put(DBUniversitas.MyColumns.Jenis, setJenisKampus);
-      values.put(DBUniversitas.MyColumns.TanggalLahir, setTanggalLahir);
+      values.put(DBUniversitas.MyColumns.Jenis, setJenis);
       values.put(DBUniversitas.MyColumns.Alamat, setAlamat);
       //Menambahkan Baris Baru, Berupa Data yang diinputkan
         create.insert(DBUniversitas.MyColumns.NamaTabel, null, values);
@@ -111,7 +91,6 @@ public class MainActivity extends AppCompatActivity {
     private void clearData(){
         Kode.setText("");
         Nama.setText("");
-        TanggalLahir.setText("");
         Alamat.setText("");
     }
 }

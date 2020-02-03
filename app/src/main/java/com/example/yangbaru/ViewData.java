@@ -1,10 +1,13 @@
 package com.example.yangbaru;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -29,9 +32,10 @@ public class ViewData extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
+    private ArrayList KodeList;
     private ArrayList NamaList;
     private ArrayList AkreditasList;
-    private ArrayList KodeList;
+    private ArrayList StatusList;
 
     SliderView sliderMyuniv;
     TextView greetText;
@@ -42,9 +46,10 @@ public class ViewData extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_utama);
         getSupportActionBar().setTitle("Daftar Universitas ");
+        KodeList = new ArrayList<>();
         NamaList = new ArrayList<>();
         AkreditasList = new ArrayList<>();
-        KodeList = new ArrayList<>();
+        StatusList = new ArrayList<>();
         MyDatabase = new DBUniversitas(getBaseContext());
 
         sliderMyuniv = findViewById(R.id.imageSlider);
@@ -52,7 +57,15 @@ public class ViewData extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.rv_univ);
 
-//        recyclerView = findViewById(R.id.recycler);
+        Button tambah = findViewById(R.id.add);
+
+        tambah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent pin = new Intent(ViewData.this, MainActivity.class);
+                startActivity(pin);
+            }
+        });
         getData();
         layoutManager = new LinearLayoutManager(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(
@@ -61,7 +74,7 @@ public class ViewData extends AppCompatActivity {
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setHasFixedSize(true);
-        adapter = new RecyclerViewAdapter(NamaList, AkreditasList, KodeList);
+        adapter = new RecyclerViewAdapter(KodeList, NamaList, AkreditasList, StatusList);
         recyclerView.setAdapter(adapter);
 
         final ImgAdapter sliderImgAdapter = new ImgAdapter(this);
@@ -82,9 +95,6 @@ public class ViewData extends AppCompatActivity {
 
         greeting();
 
-//        DividerItemDecoration itemDecoration = new DividerItemDecoration(getApplicationContext(), DividerItemDecoration.VERTICAL);
-//        itemDecoration.setDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.line));
-//        recyclerView.addItemDecoration(itemDecoration);
     }
 
     private void greeting() {
@@ -114,6 +124,7 @@ public class ViewData extends AppCompatActivity {
             KodeList.add(cursor.getString(0));
             NamaList.add(cursor.getString(1));
             AkreditasList.add(cursor.getString(2));
+            StatusList.add(cursor.getString(3));
         }
     }
 
